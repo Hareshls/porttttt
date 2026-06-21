@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-dark text-gray-200 font-inter antialiased selection:bg-brand selection:text-dark;
+    background-image: radial-gradient(ellipse at top center, rgba(147, 51, 234, 0.08) 0%, rgba(3, 0, 10, 1) 50%);
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit text-white tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-dark-card/50 backdrop-blur-md border border-dark-border;
+  }
+  .glow-border {
+    @apply transition-colors duration-300;
+  }
+  .glow-border:hover {
+    @apply border-brand/50 shadow-[0_0_15px_rgba(147,51,234,0.2)];
+  }
+  .glow-text {
+    @apply text-brand drop-shadow-[0_0_8px_rgba(147,51,234,0.5)];
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #03000a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e0836;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9333ea;
+}
+
+/* GSAP Draw Line SVG path helper */
+.draw-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+/* Custom Orbit Animations (Added here for reliable Vite HMR) */
+@keyframes spin-forward {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-backward {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-forward 40s linear infinite;
+}
+.animate-spin-slow-reverse {
+  animation: spin-backward 40s linear infinite;
+}
+.animate-spin-slower {
+  animation: spin-forward 60s linear infinite;
+}
+.animate-spin-slower-reverse {
+  animation: spin-backward 60s linear infinite;
+}
